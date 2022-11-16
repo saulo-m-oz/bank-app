@@ -1,10 +1,12 @@
 FROM node:18.12.1
 
-WORKDIR /app
+RUN mkdir app/backend
 
-COPY "package.json" .
+WORKDIR /app/backend
 
-RUN yarn
+COPY package*.json ./
+
+RUN yarn install
 
 COPY . .
 
