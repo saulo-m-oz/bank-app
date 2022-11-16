@@ -1,6 +1,6 @@
 import { IUserLogin } from "../../interfaces/users";
 import { AppError } from "../../errors/appError";
-import { compare } from "bcrypt";
+import { compare } from "bcryptjs";
 import { User } from "../../entities/user.entity";
 
 import AppDataSource from "../../data-source";

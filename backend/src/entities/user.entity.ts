@@ -16,7 +16,11 @@ export class User{
     @Exclude()
     password: string;
 
+    @Column()
+    accountId: string;
+
     @OneToOne(() => Account)
     @JoinColumn()
+    @Exclude()
     account: Account;
 }

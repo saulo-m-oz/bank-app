@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { Entity, Column,  PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn} from "typeorm";
 import { Account } from "./account.entity";
 
@@ -12,10 +13,18 @@ export class Transaction{
     @CreateDateColumn()
     createdAt: Date;
 
+    @Column()
+    debitedAccountId: string;
+
+    @Column()
+    creditedAccountId: string;
+
     @ManyToOne(() => Account, (debitedAccount) => debitedAccount.id, {nullable: false})
+    @Exclude()
     debitedAccount: Account;
 
     @ManyToOne(() => Account, (creditedAccount) => creditedAccount.id, {nullable: false})
+    @Exclude()
     creditedAccount: Account;
 
 }

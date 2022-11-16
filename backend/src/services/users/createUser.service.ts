@@ -1,6 +1,6 @@
 import { IUserCreate } from "../../interfaces/users";
 import { AppError } from "../../errors/appError";
-import { hash } from "bcrypt";
+import { hash } from "bcryptjs";
 
 import { User } from "../../entities/user.entity";
 import { Account } from "../../entities/account.entity";
