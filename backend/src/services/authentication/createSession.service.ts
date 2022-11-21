@@ -6,6 +6,7 @@ import { User } from "../../entities/user.entity";
 import AppDataSource from "../../data-source";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
+import { Account } from "../../entities/account.entity";
 
 export const createSessionService = async ({
   username,
@@ -25,6 +26,7 @@ export const createSessionService = async ({
   const passwordMatch = await compare(password, user.password);
   if (!passwordMatch) throw new AppError(401, "Usuário ou senha inválido.");
 
+
   // Caso seja, é gerado um token com validade de 24h, salvando o user.id no subject
   const token = jwt.sign(
     { accountId: user.account, username: user.username },
@@ -35,5 +37,9 @@ export const createSessionService = async ({
     }
   );
 
-  return token;
+  return {
+    username,
+    token,
+    account: user.accountId
+  };
 };

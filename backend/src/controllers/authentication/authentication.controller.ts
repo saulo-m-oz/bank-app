@@ -9,8 +9,8 @@ export class AuthenticationController {
     const loginData: IUserLogin = req.loginInfo;
 
     // Realizando login e salvando token
-    const token = await createSessionService(loginData);
+    const response = await createSessionService(loginData);
 
-    return res.status(200).json({token});
+    return res.status(200).json(response);
   }
 }

@@ -26,5 +26,4 @@ export class Transaction{
     @ManyToOne(() => Account, (creditedAccount) => creditedAccount.id, {nullable: false})
     @Exclude()
     creditedAccount: Account;
-
 }
