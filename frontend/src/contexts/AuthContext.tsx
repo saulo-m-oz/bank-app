@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { api } from "../api/api";
+import { clientAPI } from "../api/api";
 import { destroyCookie, parseCookies, setCookie } from "nookies";
 import Router from "next/router";
 import Error from "next/error";
@@ -50,12 +50,11 @@ export function AuthProvider({ children }: AuthProviderProp) {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.post("auth", userData);
+      const response = await clientAPI.post("auth", userData);
       const { token, username, account } = response.data;
-      api.defaults.headers["Authorization"] = `Bearer ${token}`;
+      clientAPI.defaults.headers["Authorization"] = `Bearer ${token}`;
 
       setCookie(undefined, "next.token", token);
-      console.log({username, account});
       setUser({username, account});
 
       setTimeout(() => {
@@ -73,7 +72,7 @@ export function AuthProvider({ children }: AuthProviderProp) {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.post("users", userData);
+      const response = await clientAPI.post("users", userData);
       setTimeout(() => {
         setLoading(false);
         setError(null);

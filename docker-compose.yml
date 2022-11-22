@@ -1,22 +1,27 @@
 version: "3.9"
 
+networks:
+  next-app:
+    external: true
+
 services:
   frontend:
     container_name: frontend
     build: ./frontend
     ports:
-      - $PORT:$PORT
+      - $FPORT:$FPORT
     env_file:
       - .env
     depends_on:
-      backend
-    command: bash -c "yarn && yarn dev"
+      - backend
+    networks:
+      - next-app
 
   backend:
-    container_name: api
+    container_name: backend
     build: ./backend
     ports:
-      - $API_PORT:$API_PORT
+      - $PORT:$PORT
     env_file:
       - .env
     depends_on:
@@ -25,6 +30,8 @@ services:
     command: bash -c "yarn && yarn typeorm migration:run -d src/data-source && yarn dev"
     volumes:
       - .:/app
+    networks:
+      - next-app
 
   db:
     container_name: db
@@ -39,3 +46,5 @@ services:
       timeout: 5s
       retries: 5
       start_period: 5s
+    networks:
+      - next-app

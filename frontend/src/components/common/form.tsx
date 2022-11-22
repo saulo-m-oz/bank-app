@@ -1,7 +1,6 @@
 import React, { FormEvent, useState, useContext } from "react";
-import Link from "next/link";
-import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/AuthContext";
+import Link from "next/link";
 
 interface PropType {
   formType: string;

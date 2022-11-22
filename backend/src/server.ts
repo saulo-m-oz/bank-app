@@ -8,7 +8,7 @@ import AppDataSource from "./data-source";
         console.error("Error during Data Source initialization", err)
     })
     
-    app.listen(process.env.PORT || 3000, () => {
-        console.log(`Servidor executando em: http://localhost:${process.env.PORT || 3000}`)
+    app.listen(process.env.PORT || 8080, () => {
+        console.log(`Servidor executando em: http://localhost:${process.env.PORT || 8080}`)
     })    
 })()
