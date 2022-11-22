@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 import { getAPIClient } from "../../api/axios";
 import { BalanceCard } from "../../components/common/balance";
-import { api } from "../../api/api";
+import { clientAPI } from "../../api/api";
 
 import Head from "next/head";
 import Link from "next/link";
@@ -30,9 +30,9 @@ export default function Pix({ balance }: any) {
 
     try {
       const data = { username, amount };
-      const response = await api.post("transactions", data);
+      const response = await clientAPI.post("transactions", data);
       if (response) {
-        const response = await api.get("account");
+        const response = await clientAPI.get("account");
         const {balance} = response.data;
         setBalance(balance);
         setTimeout(() => {

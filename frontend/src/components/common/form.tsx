@@ -36,14 +36,14 @@ export function Form({ formType }: PropType) {
       >
         <input
           onChange={(e) => setUser(e.target.value)}
-          className="w-full p-3 rounded-t-md border border-b-0 border-primary bg-black"
+          className="w-full p-3 rounded-t-md border border-b-0 border-primary bg-black outline-none appearance-none"
           type="text"
           placeholder="Insira seu username"
           required
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 rounded-b-md border border-primary bg-black mb-3"
+          className="w-full p-3 rounded-b-md border border-primary bg-black mb-3 outline-none appearance-none"
           type="password"
           placeholder="Insira sua senha"
           required

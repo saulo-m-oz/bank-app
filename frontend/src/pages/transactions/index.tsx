@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 import { getAPIClient } from "../../api/axios";
 import { HistoryCard } from "../../components/common/historyCard";
-import { api } from "../../api/api";
+import { clientAPI } from "../../api/api";
 import { useFormatDate } from "../../utils/formatDate";
 
 import Head from "next/head";
@@ -31,7 +31,7 @@ export default function Transactions({ transactions }: any) {
           ? (uri = `transactions/?date=${formattedDate}&&type=creditedAccount`)
           : (uri = `transactions/?date=${formattedDate}&&type=debitedAccount`);
       }
-      const response = await api.get(uri);
+      const response = await clientAPI.get(uri);
       if (response) {
         setTimeout(() => {
           setLoading(false);

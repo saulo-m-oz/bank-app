@@ -17,6 +17,7 @@ services:
     networks:
       - next-app
 
+
   backend:
     container_name: backend
     build: ./backend
