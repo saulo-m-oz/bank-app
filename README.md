@@ -1,6 +1,4 @@
-# ngcash-fullstack
-Projeto Fullstack criado para o teste técnico da NG.CASH. 
-
+# Bank App
 Frontend desenvolvido com NextJS, Nookies, Tailwind e Axios;
 
 Backend desenvolvido com ExpressJS, Typeorm, Postgres, Docker, Bcrypt, JWT e Yup.
